@@ -1,0 +1,19 @@
+syntax="proto3";
+option go_package="./authgrpc;authgrpc";
+package authgrpc;
+
+service AuthGrpc {
+    rpc Validate(TokenPair) returns (AuthResponse) {}
+}
+
+message TokenPair {
+    string AccessToken = 1;
+    string RefreshToken = 2;
+}
+
+message AuthResponse {
+    string Status = 1;
+    string NewAccessToken = 2;
+    string NewRefreshToken = 3;
+    string Login = 4;
+}
