@@ -1,0 +1,17 @@
+syntax="proto3";
+option go_package="./analyticsgrpc;analyticsgrpc";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+package analyticsgrpc;
+
+service Analytics {
+    rpc StoreEvent(Event) returns (google.protobuf.Empty) {}
+}
+
+message Event {
+    string EventId = 1;
+    string TaskId = 2;
+    google.protobuf.Timestamp Time = 3;
+    string Type = 4;
+    string Status = 5;
+}
